@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="boardMapper">
+
+	<!-- 게시글 작성 -->
+	<insert id="write">
+		INSERT INTO BOARD
+		(
+		    TITLE
+		    , CONTENT
+		)
+		VALUES
+		(
+		    #{title}
+		    ,#{content}
+		)
+	</insert>
+	
+	<!-- 게시글 조회 -->
+	<select id="selectList" resultType="BoardVo">
+		SELECT
+		    TITLE
+		    ,CONTENT
+		    ,ENROLL_DATE
+		    ,DELETE_YN
+		FROM BOARD
+		WHERE DELETE_YN = 'N'
+		<choose>
+			<when test="condition == 'title'">
+			AND TITLE LIKE 
+			</when>
+			<otherwise>
+				AND CONTENT LIKE 
+			</otherwise>
+		</choose>
+		<!--
+			<if test="condition == 'title'">
+				AND TITLE LIKE 
+			</if>
+			<if test="condition == 'content'">
+				AND CONTENT LIKE 
+			</if>
+		-->
+		'%${keyword}%'
+		ORDER BY ENROLL_DATE DESC
+	</select>
+	
+	<!-- 게시글 갯수 조회 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE DELETE_YN = 'N'
+	</select>
+
+</mapper>
