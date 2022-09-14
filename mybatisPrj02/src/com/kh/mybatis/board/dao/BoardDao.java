@@ -55,9 +55,10 @@ public class BoardDao {
 	/**
 	 * 게시글 갯수 조회
 	 * @param ss
+	 * @param map 
 	 * @return 게시글 갯수
 	 */
-	public int selectListCount(SqlSession ss) {
+	public int selectListCount(SqlSession ss, Map<String, String> map) {
 		
 		return ss.selectOne("boardMapper.selectListCount");
 		

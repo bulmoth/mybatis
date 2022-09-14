@@ -60,15 +60,16 @@ public class BoardService {
 
 	/**
 	 * 게시글 목록 갯수 조회
+	 * @param map 
 	 * @return 게시글 갯수
 	 */
-	public int selectListCount() {
+	public int selectListCount(Map<String, String> map) {
 		
 		//커넥션 준비
 		SqlSession ss = getSqlSession();
 		
 		//DAO 호출
-		int result = dao.selectListCount(ss);
+		int result = dao.selectListCount(ss, map);
 		
 		//자원 반납
 		ss.close();

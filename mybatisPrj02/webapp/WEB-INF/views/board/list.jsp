@@ -56,6 +56,16 @@
 		</form>
 	</div>
 	
+	<c:if test="${not empty condition}">
+	
+	<script>
+		window.onload = function()){
+			document.querySelector('option[value=${condition}]')
+		}
+	</script>
+	
+	</c:if>
+	
 	<div id="main">
 	
 		<div id="table-area">
@@ -84,7 +94,7 @@
 			<div>
 				<!-- 이전, 페이지들, 다음 -->
 				<c:forEach begin="${pvo.startPage}" end="${pvo.endPage}" var="i">
-					<a href="/my02/board/list?p=${i}">${i}</a>
+					<a href="/my02/board/list?p=${i}&condition=${condition}&keyword=${keyword}">${i}</a>
 				</c:forEach>
 				
 			</div>

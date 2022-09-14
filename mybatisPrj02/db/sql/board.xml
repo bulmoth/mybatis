@@ -53,6 +53,14 @@
 		SELECT COUNT(*)
 		FROM BOARD
 		WHERE DELETE_YN = 'N'
+		
+		<if test="condition == 'title'">
+			AND TITLE LIKE %${keyword}%
+		</if>
+		
+		<if test="condition == 'content'">
+		AND CONTENT LIKE %${keyword}%
+		</if>
 	</select>
 
 </mapper>

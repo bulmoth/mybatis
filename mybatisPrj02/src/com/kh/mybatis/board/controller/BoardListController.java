@@ -35,7 +35,7 @@ public class BoardListController extends HttpServlet{
 		
 		//---------페이징 처리---------------
 		//TODO 현재 페이지 가져오는 작업 추가하기
-		int listCount = new BoardService().selectListCount();		
+		int listCount = new BoardService().selectListCount(map);		
 		int currentPage = Integer.parseInt(req.getParameter("p"));		
 		int pageLimit = 5;			
 		int boardLimit = 5;		
@@ -50,6 +50,8 @@ public class BoardListController extends HttpServlet{
 		//화면 선택
 		req.setAttribute("list", list);
 		req.setAttribute("pvo", pvo);
+		req.setAttribute("condition", condition);
+		req.setAttribute("keyword", keyword);
 		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
 	}
 }

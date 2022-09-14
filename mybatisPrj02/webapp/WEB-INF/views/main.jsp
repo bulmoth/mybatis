@@ -20,7 +20,7 @@
 	
 	<a href="/my02/board/write">게시글 작성</a>
 	<br>
-	<a href="/my02/board/list">게시글 조회</a>
+	<a href="/my02/board/list?p=1">게시글 조회</a>
 
 </body>
 </html>
